@@ -1,0 +1,60 @@
+$breakpoints: (
+  small: 480px,
+  medium: 768px,
+  large: 1024px, );
+
+@mixin respond-to($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media(min-width: map-get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  }
+}
+
+@mixin linear-gradient($direction, $color1, $color2) {
+  background: $color1;
+  background: -webkit-linear-gradient($direction, $color1 0%, $color2 100%);
+  background: linear-gradient($direction, $color1 0%, $color2 100%);
+}
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  border-radius: $radius;
+}
+
+@mixin box-shadow($x, $y, $blur, $color) {
+  -webkit-box-shadow: $x $y $blur $color;
+  -moz-box-shadow: $x $y $blur $color;
+  box-shadow: $x $y $blur $color;
+}
+
+@mixin triangle($direction, $size, $color) {
+  @if($direction == "up") {
+    border-bottom: #{$size} solid $color;
+    border-left: #{$size} solid transparent;
+    border-right: #{$size} solid transparent;
+    transform: translateY(-50%) rotate(-45deg);
+  }
+@else
+  if($direction == "down") {
+    border-top: #{$size} solid $color;
+    border-left: #{$size} solid transparent;
+    border-right: #{$size} solid transparent;
+    transform: translateY(50%) rotate(-45deg);
+  }
+@else
+  if($direction == "left") {
+    border-right: #{$size} solid $color;
+    border-top: #{$size} solid transparent;
+    border-bottom: #{$size} solid transparent;
+    transform: translateX(-50%) rotate(45deg);
+  }
+@else
+  if($direction == "right") {
+    border-left: #{$size} solid $color;
+    border-top: #{$size} solid transparent;
+    border-bottom: #{$size} solid transparent;
+    transform: translateX(50%) rotate(45deg);
+  }
+}

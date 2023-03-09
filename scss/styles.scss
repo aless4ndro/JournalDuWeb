@@ -1,0 +1,185 @@
+@use 'sass:math';
+@use 'sass:color';
+@use 'sass:map';
+@import 'mixins';
+
+body {
+  box-sizing: border-box;
+  font-family: 'Open Sans', sans-serif;
+  padding: 0;
+  margin: auto;
+  background-image: url('/img/fond.webp');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+
+}
+
+.container {
+  @include linear-gradient(top, #ffffff, #cccccc);
+}
+
+.container {
+  @include border-radius(5px);
+}
+
+.container {
+  @include box-shadow(2px, 2px, 5px, #cccccc);
+}
+
+
+.clear {
+  clear: both;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0 auto;
+  max-width: 1200px;
+  padding: 0 10px;
+}
+
+.card {
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin: 20px;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+
+  h3 {
+    font-size: 24px;
+    margin: 20px;
+  }
+
+  .box {
+    position: relative;
+
+    .photo-card {
+      display: block;
+      height: auto;
+      max-width: 100%;
+    }
+
+    .text-box {
+      background-color: rgba(0, 0, 0, 0.75);
+      bottom: 0;
+      color: white;
+      font-size: 12px;
+      left: 0;
+      padding: 10px;
+      position: absolute;
+      text-align: center;
+      width: 100%;
+    }
+  }
+
+  p {
+    margin: 20px;
+    text-align: justify;
+  }
+
+  button {
+    background-color: #ff6b6b;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 20px;
+    padding: 10px;
+    position: relative;
+    text-align: center;
+    transition: background-color 0.2s;
+
+    &.down {
+      @include triangle("down", 10px, white);
+    }
+
+    &.up {
+      @include triangle("up", 10px, white);
+    }
+
+    &.left {
+      @include triangle("left", 10px, white);
+    }
+
+    &.right {
+      @include triangle("right", 10px, white);
+    }
+
+    &:hover {
+      background-color: darken(#ff6b6b, 10%);
+    }
+  }
+
+
+  #triangle {
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid white;
+    height: 0;
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0;
+  }
+
+  &:hover {
+    background-color: darken(#ff6b6b, 10%);
+  }
+}
+
+@include respond-to(small) {
+  width: calc(50% - 40px);
+}
+
+@include respond-to(medium) {
+  width: calc(33.3333% - 40px);
+}
+
+@include respond-to(large) {
+  width: calc(25% - 40px);
+}
+
+
+#logo {
+  text-align: center;
+
+  img {
+    max-width: 100%;
+  }
+}
+
+#title-flex {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+h1 {
+  font-size: 60px;
+  margin: 0;
+
+  #web {
+    color: #ff6b6b;
+  }
+}
+
+h2 {
+  font-size: 18px;
+  margin: 10px;
+}
+
+h4 {
+  font-size: 14px;
+  margin: 10px;
+}
